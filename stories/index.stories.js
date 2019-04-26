@@ -7,15 +7,16 @@ import { withInfo } from 'storybook-addon-vue-info';
 import { setDefaults } from 'storybook-addon-vue-info'
 import { withViewport } from '@storybook/addon-viewport';
 
-import { Button, Radio, Icon } from 'ant-design-vue';
-
-import AntButtonOne from './components/AntButtonOne.vue';
 import 'ant-design-vue/dist/antd.less'; // or .css
-
+import { Button, Icon, Row, Col } from 'ant-design-vue';
+import AntButtonOne from './components/AntButtonOne.vue';
+import Grid from './components/Grid.vue';
 Vue.use(AntButtonOne);
+Vue.use(Grid);
 Vue.use(Button);
-//Vue.use(Radio);
 Vue.use(Icon);
+Vue.use(Row);
+Vue.use(Col);
 
 setDefaults({
     header: true,
@@ -39,7 +40,6 @@ storiesOf('Welcome', module).add('to Storybook', () => ({
 storiesOf('Button', module)
     .addDecorator(withInfo)
     .addDecorator(withViewport)
-
     .add('with text', () => ({
         components: { MyButton },
         template: '<my-button @click="action">Hello Button</my-button>',
@@ -92,3 +92,22 @@ storiesOf('Button', module)
     }));
 
 /* eslint-enable react/react-in-jsx-scope */
+
+
+storiesOf('Layout', module)
+.addDecorator(withInfo)
+.addDecorator(withViewport)
+.add('Grid', () => ({
+    components: { Grid },
+    template: '<Grid />',
+    propsDescription: {
+        AntButtonOne: {
+
+        }
+    }
+}),
+{
+    info: {
+        summary: 'Summary for MyComponent'
+    }
+});
