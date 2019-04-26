@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { withInfo } from 'storybook-addon-vue-info';
 import { setDefaults } from 'storybook-addon-vue-info'
+import { withViewport } from '@storybook/addon-viewport';
 
 import { Button, Radio, Icon } from 'ant-design-vue';
 
@@ -37,6 +38,7 @@ storiesOf('Welcome', module).add('to Storybook', () => ({
 
 storiesOf('Button', module)
     .addDecorator(withInfo)
+    .addDecorator(withViewport)
 
     .add('with text', () => ({
         components: { MyButton },
